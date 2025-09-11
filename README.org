@@ -1,0 +1,36 @@
+* casual-eww: a casual transient menu for emacs' eww
+
+This is a proposed new =casual-eww= menu, intended to be incorporated
+into [[https://github.com/kickingvegas][@kickingvegas's]] lovely [[https://github.com/kickingvegas/casual-suite][casual suite]].
+
+The code here is entirely from Claude Code.
+
+** Provenance, prompts
+
+It's 2025 and we are still very early in this era of vibe-coding, or
+agentic coding. With human-written code, we attribute authorship (either
+explicitly, or via =git blame=), and in the best case, include
+documentation that describes the design and intended function of the
+code.
+
+For code that is entirely or mostly generated from an LLM, it seems like
+the corresponding thing is to include the key prompts used. We still
+don't -- and shouldn't! -- entirely trust the code these LLMs produce,
+and it seems wise to document what input to the agent produced the code.
+
+(If nothing else, if someone wants to do something similar, it gives
+them a starting point for their own prompts.)
+
+The key prompt here was:
+
+#+begin_quote
+This code is for various "transient" menus for some emacs major modes.
+I'd like to add a "casual" menu for eww, the emacs major mode for web
+browsing. Please read the eww-tutorial.md and eww-keybindings.md
+files. Describe what would be good to include in an eww casual menu.
+Include page navigation and link/history browser navigation commands,
+and any others that are useful for basic web browsing and navigation.
+#+end_quote
+
+The =eww-tutorial.md= was just copy and pasted from [[https://www.gnu.org/software/emacs/manual/html_node/eww/Basics.html][the GNU website]]; the
+keybindings were likewise just copied from the =C-h b= buffer.

@@ -40,49 +40,57 @@
 
 (transient-define-prefix casual-eww-tmenu ()
   "Casual EWW main menu."
-  [["Navigate"
-    ("g" "Reload" eww-reload :transient nil)
+  [["Link Nav"
     ("G" "Open URL…" eww :transient nil)
     ("l" "Back" eww-back-url :transient nil)
     ("r" "Forward" eww-forward-url :transient nil)
     ("H" "History" eww-list-histories :transient nil)]
-   
-   ["Site"
+
+   ["Page Nav"
+    ("SPC" "scroll ↓" scroll-down-command :transient t)
+    ("DEL" "scroll ↑" scroll-up-command :transient t)
+    ("<" "page top" beginning-of-buffer :transient t)
+    (">" "page end" end-of-buffer :transient t)
+    ("g" "Reload" eww-reload :transient nil)
+    ]
+
+   ["Site Nav"
     ("n" "Next URL" eww-next-url :transient nil)
     ("p" "Previous URL" eww-previous-url :transient nil)
     ("t" "Top URL" eww-top-url :transient nil)
     ("u" "Up URL" eww-up-url :transient nil)]
-   
+
    ["Links"
     ("TAB" "Next Link" shr-next-link :transient t)
     ("DEL" "Previous Link" shr-previous-link :transient t)
     ("RET" "Open in New Buffer" eww-open-in-new-buffer :transient nil)
     ("w" "Copy URL" eww-copy-page-url :transient t)
     ("A" "Copy Alternate URL" eww-copy-alternate-url :transient t)]]
-  
+
   [["View"
     ("R" "Readable Mode" eww-readable :transient t)
     ("F" "Toggle Fonts" eww-toggle-fonts :transient t)
     ("C" "Toggle Colors" eww-toggle-colors :transient t)
     ("I" "Toggle Images" eww-toggle-images :transient t)
     ("v" "View Source" eww-view-source :transient nil)]
-   
+
    ["Actions"
+    ("o" "Copy as org markup" org-eww-copy-for-org-mode :transient nil )
     ("d" "Download" eww-download :transient nil)
     ("&" "External Browser" eww-browse-with-external-browser :transient nil)]
-   
+
    ["Bookmarks & Buffers"
     ("b" "Add Bookmark" eww-add-bookmark :transient t)
     ("B" "List Bookmarks" eww-list-bookmarks :transient nil)
     ("S" "List Buffers" eww-list-buffers :transient nil)
     ("s" "Switch Buffer" eww-switch-to-buffer :transient nil)]]
-  
+
   [["Utility"
     ("?" "Describe Mode" describe-mode :transient nil)
     ("E" "Set Encoding" eww-set-character-encoding :transient t)
     ("D" "Toggle Direction" eww-toggle-paragraph-direction :transient t)
     ("q" "Quit" quit-window :transient nil)]
-   
+
    ["Casual"
     ("," "Settings" casual-eww-settings-tmenu :transient t)
     ("a" "About" casual-eww-about :transient t)]])
@@ -94,11 +102,11 @@
     ("d" "Download Directory" casual-eww-set-download-directory :transient t)
     ("s" "Search Engine" casual-eww-set-search-prefix :transient t)
     ("r" "Readable URLs" casual-eww-configure-readable-urls :transient t)]]
-  
+
   [["External Browser"
     ("b" "Set External Browser" casual-eww-set-external-browser :transient t)
     ("c" "Configure Content Types" casual-eww-configure-content-types :transient t)]]
-  
+
   [["Return"
     ("<" "Back" casual-eww-tmenu :transient t)]])
 
@@ -108,7 +116,7 @@
     ("f" "Use Fonts" eww-toggle-fonts :transient t)
     ("c" "Use Colors" eww-toggle-colors :transient t)
     ("i" "Show Images" eww-toggle-images :transient t)]]
-  
+
   [["Return"
     ("<" "Back" casual-eww-settings-tmenu :transient t)]])
 
@@ -117,7 +125,7 @@
 (defun casual-eww-set-download-directory ()
   "Set the EWW download directory."
   (interactive)
-  (let ((dir (read-directory-name "EWW download directory: " 
+  (let ((dir (read-directory-name "EWW download directory: "
                                   eww-download-directory)))
     (setq eww-download-directory dir)
     (message "EWW download directory set to: %s" dir)))
@@ -132,7 +140,7 @@
 (defun casual-eww-set-external-browser ()
   "Set the external browser for EWW."
   (interactive)
-  (let ((browser (read-string "External browser function: " 
+  (let ((browser (read-string "External browser function: "
                               (symbol-name browse-url-secondary-browser-function))))
     (setq browse-url-secondary-browser-function (intern browser))
     (message "External browser set to: %s" browser)))

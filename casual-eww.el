@@ -92,33 +92,37 @@
     ("q" "Quit" quit-window :transient nil)]
 
    ["Casual"
-    ("," "Settings" casual-eww-settings-tmenu :transient t)
-    ("a" "About" casual-eww-about :transient t)]])
+    ("," "Settings›" casual-eww-settings-tmenu :transient t)]])
+
+(transient-define-prefix casual-eww-utility-tmenu ()
+  "Casual EWW utility menu."
+  [["Utility"
+    ("?" "Describe Mode" describe-mode :transient nil)
+    ("E" "Set Encoding" eww-set-character-encoding :transient t)
+    ("D" "Toggle Direction" eww-toggle-paragraph-direction :transient t)]
+
+   ["Font Display"
+    ("f" "Use Fonts" eww-toggle-fonts :transient t)
+    ("c" "Use Colors" eww-toggle-colors :transient t)
+    ("i" "Show Images" eww-toggle-images :transient t)]]
+
+   [["Return"
+    ("<" "Back" casual-eww-tmenu :transient t)]])
 
 (transient-define-prefix casual-eww-settings-tmenu ()
   "Casual EWW settings menu."
   [["Settings"
-    ("f" "Font Settings›" casual-eww-font-settings-tmenu :transient t)
     ("d" "Download Directory" casual-eww-set-download-directory :transient t)
     ("s" "Search Engine" casual-eww-set-search-prefix :transient t)
-    ("r" "Readable URLs" casual-eww-configure-readable-urls :transient t)]]
+    ("r" "Readable URLs" casual-eww-configure-readable-urls :transient t)]
 
-  [["External Browser"
+   ["External Browser"
     ("b" "Set External Browser" casual-eww-set-external-browser :transient t)
     ("c" "Configure Content Types" casual-eww-configure-content-types :transient t)]]
 
   [["Return"
     ("<" "Back" casual-eww-tmenu :transient t)]])
 
-(transient-define-prefix casual-eww-font-settings-tmenu ()
-  "Casual EWW font settings menu."
-  [["Font Display"
-    ("f" "Use Fonts" eww-toggle-fonts :transient t)
-    ("c" "Use Colors" eww-toggle-colors :transient t)
-    ("i" "Show Images" eww-toggle-images :transient t)]]
-
-  [["Return"
-    ("<" "Back" casual-eww-settings-tmenu :transient t)]])
 
 ;;; Settings Functions
 
@@ -155,46 +159,6 @@
   (interactive)
   (customize-variable 'eww-use-external-browser-for-content-type))
 
-;;; About
-
-(defun casual-eww-about-eww ()
-  "Casual EWW is a Transient menu for EWW (Emacs Web Wowser).
-
-EWW is Emacs's built-in web browser, providing basic web browsing
-capabilities within Emacs. Casual EWW provides an intuitive
-Transient-based interface for common EWW operations.
-
-Key Features:
-- Page and history navigation
-- Link navigation and management
-- Content viewing options (readable mode, fonts, colors, images)
-- Bookmark and buffer management
-- Download and external browser integration
-- Customizable settings
-
-Learn more about using Casual EWW at our discussion group on GitHub.
-Any questions or comments about it should be made there.
-URL `https://github.com/kickingvegas/casual-suite/discussions'
-
-If you find a bug or have an enhancement request, please file an issue.
-Our best effort will be made to answer it.
-URL `https://github.com/kickingvegas/casual-suite/issues'
-
-If you enjoy using Casual EWW, consider making a modest financial
-contribution to help support its development and maintenance.
-URL `https://www.buymeacoffee.com/kickingvegas'
-
-Casual EWW was conceived and crafted by Claude (Anthropic AI).
-
-Thank you for using Casual EWW.
-
-Always choose love."
-  (ignore))
-
-(defun casual-eww-about ()
-  "About information for Casual EWW."
-  (interactive)
-  (describe-function #'casual-eww-about-eww))
 
 (provide 'casual-eww)
 ;;; casual-eww.el ends here

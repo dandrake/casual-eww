@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2024 Claude (Anthropic)
 
-;; Author: Claude <noreply@anthropic.com>
-;; URL: https://github.com/kickingvegas/casual-suite
+;; Author: Claude <noreply@anthropic.com> and Dan Drake
+;; URL: https://github.com/dandrake/casual-eww
 ;; Keywords: tools
 ;; Version: 2.0.0
 ;; Package-Requires: ((emacs "29.1") (casual-lib "1.1.0"))
@@ -47,10 +47,10 @@
     ("H" "History" eww-list-histories :transient nil)]
 
    ["Page Nav"
-    ("SPC" "scroll ↓" scroll-down-command :transient t)
-    ("DEL" "scroll ↑" scroll-up-command :transient t)
-    ("<" "page top" beginning-of-buffer :transient t)
-    (">" "page end" end-of-buffer :transient t)
+    ("SPC" "Scroll ↓" scroll-down-command :transient t)
+    ("DEL, S-SPC" "Scroll ↑" scroll-up-command :transient t)
+    ("<" "Page top" beginning-of-buffer :transient t)
+    (">" "Page end" end-of-buffer :transient t)
     ("g" "Reload" eww-reload :transient nil)
     ]
 
@@ -62,7 +62,7 @@
 
    ["Links"
     ("TAB" "Next Link" shr-next-link :transient t)
-    ("DEL" "Previous Link" shr-previous-link :transient t)
+    ("BKSP" "Previous Link" shr-previous-link :transient t)
     ("RET" "Open in New Buffer" eww-open-in-new-buffer :transient nil)
     ("w" "Copy URL" eww-copy-page-url :transient t)
     ("A" "Copy Alternate URL" eww-copy-alternate-url :transient t)]]
@@ -75,7 +75,7 @@
     ("v" "View Source" eww-view-source :transient nil)]
 
    ["Actions"
-    ("o" "Copy as org markup" org-eww-copy-for-org-mode :transient nil )
+    ("o" "Copy as Org Markup" org-eww-copy-for-org-mode :transient nil )
     ("d" "Download" eww-download :transient nil)
     ("&" "External Browser" eww-browse-with-external-browser :transient nil)]
 
@@ -83,16 +83,11 @@
     ("b" "Add Bookmark" eww-add-bookmark :transient t)
     ("B" "List Bookmarks" eww-list-bookmarks :transient nil)
     ("S" "List Buffers" eww-list-buffers :transient nil)
-    ("s" "Switch Buffer" eww-switch-to-buffer :transient nil)]]
+    ("s" "Switch Buffer" eww-switch-to-buffer :transient nil)]
 
-  [["Utility"
-    ("?" "Describe Mode" describe-mode :transient nil)
-    ("E" "Set Encoding" eww-set-character-encoding :transient t)
-    ("D" "Toggle Direction" eww-toggle-paragraph-direction :transient t)
-    ("q" "Quit" quit-window :transient nil)]
-
-   ["Casual"
-    ("," "Settings›" casual-eww-settings-tmenu :transient t)]])
+  ["Casual"
+    ("," "Settings›" casual-eww-settings-tmenu :transient t)
+    ("q" "Quit eww" quit-window :transient nil)]])
 
 (transient-define-prefix casual-eww-utility-tmenu ()
   "Casual EWW utility menu."

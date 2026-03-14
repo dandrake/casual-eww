@@ -1,5 +1,7 @@
 * casual-eww: a casual transient menu for emacs' eww
 
+** This repo has been archived, as a [[https://github.com/kickingvegas/casual/releases/tag/2.13.0][better version is now in the casual suite]].
+
 This is a proposed new =casual-eww= menu, intended to be incorporated
 into [[https://github.com/kickingvegas][@kickingvegas's]] lovely [[https://github.com/kickingvegas/casual-suite][casual suite]].
 
